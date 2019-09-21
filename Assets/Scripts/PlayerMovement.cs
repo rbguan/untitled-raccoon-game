@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // InitialWalkRange = 30.0f;
         // ParanoiaLevel = 1.0f;
-        // WalkRemaining = InitialWalkRange * ParanoiaLevel;
+        WalkRemaining = InitialWalkRange * ParanoiaLevel;
         // DoneAction = false;
         myRigidBody = GetComponent<Rigidbody>();
         // WalkSpeed = 5.0f;
@@ -48,7 +48,4 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void OnMouseClick(){
-
-    }
 }
