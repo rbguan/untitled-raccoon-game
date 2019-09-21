@@ -24,13 +24,15 @@ public class PlayerInteract : MonoBehaviour
         InteractInput = Input.GetAxis("Fire1");
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, myReach.radius, Interactables);
         for(int i = 0; i < colliders.Length; i++)
         {
-            if(InteractInput > 0){
-
+            if(InteractInput > 0 && !DoneAction){
+                colliders[i].GetComponentInParent<InteractableObject>().DoAction();
+                DoneAction = true;
             }
         }
     }

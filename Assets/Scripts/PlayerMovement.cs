@@ -17,12 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        // InitialWalkRange = 30.0f;
-        // ParanoiaLevel = 1.0f;
         WalkRemaining = InitialWalkRange * ParanoiaLevel;
-        // DoneAction = false;
         myRigidBody = GetComponent<Rigidbody>();
-        // WalkSpeed = 5.0f;
 
     }
     // Update is called once per frame

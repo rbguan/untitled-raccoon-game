@@ -20,8 +20,8 @@ public class InteractableObject : MonoBehaviour
         
     }
 
-    public void ToggleLight(){
-        spotlight.enabled = !spotlight.enabled;
+    public void DoAction(){
+        spotlight.color = Color.red;
     }
 
     private void OnTriggerEnter(Collider other)
