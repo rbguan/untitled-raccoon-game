@@ -13,14 +13,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody myRigidBody;
     private float VerticalInput;
     private float HorizontalInput;
+    private StatSlider myWalkSlider;
 
-    
 
     void Awake()
     {
         WalkRemaining = InitialWalkRange * ParanoiaLevel;
         myRigidBody = GetComponent<Rigidbody>();
-
+        myWalkSlider = GetComponent<StatSlider>();
+        myWalkSlider.StartingLevel = WalkRemaining;
+        myWalkSlider.mySlider.maxValue = WalkRemaining;
     }
     // Update is called once per frame
     void Update()
@@ -49,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             myRigidBody.MoveRotation(myRigidBody.rotation * turnRotation);
 
             WalkRemaining -= (moveVector.magnitude);
+            myWalkSlider.mySlider.value -= moveVector.magnitude;
         }
         
         
