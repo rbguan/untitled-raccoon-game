@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private float InitialWalkRange;
     [SerializeField] private float ParanoiaLevel;
     [SerializeField] private float WalkRemaining;
@@ -14,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float VerticalInput;
     private float HorizontalInput;
     private StatSlider myWalkSlider;
+    private StatSlider myParanoiaSlider;   
 
 
     void Awake()
@@ -38,23 +38,14 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 moveVector = transform.forward * VerticalInput * WalkSpeed * Time.deltaTime;
             myRigidBody.MovePosition(myRigidBody.position + moveVector);
-
-            //Vector3 sideVector = transform.right * HorizontalInput * WalkSpeed * Time.deltaTime;
-            //myRigidBody.MovePosition(myRigidBody.position + sideVector);
-            
             float turn = HorizontalInput * TurnSpeed * Time.deltaTime;
-
             // Make this into a rotation in the y axis.
             Quaternion turnRotation = Quaternion.Euler (0f, turn, 0f);
-
             // Apply this rotation to the rigidbody's rotation.
             myRigidBody.MoveRotation(myRigidBody.rotation * turnRotation);
-
             WalkRemaining -= (moveVector.magnitude);
             myWalkSlider.mySlider.value -= moveVector.magnitude;
         }
-        
-        
     }
 
 }
