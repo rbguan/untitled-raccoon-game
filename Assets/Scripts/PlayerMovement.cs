@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float InitialWalkRange;
     [SerializeField] private float ParanoiaLevel;
-    [SerializeField] private float WalkRemaining;
+    [HideInInspector] public float WalkRemaining;
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float TurnSpeed;
     private Rigidbody myRigidBody;
