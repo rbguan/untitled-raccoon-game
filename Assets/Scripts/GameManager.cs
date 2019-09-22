@@ -117,7 +117,12 @@ public class GameManager : MonoBehaviour
         HumanEnable();
         RaccoonDisable();
         yield return StartCoroutine(HumanTurn());
-        
+        if (CheckWin())
+        {
+            //CURRENT: RELOAD SCENE
+            //TODO: GO TO ENDING SCENES
+            SceneManager.LoadScene("MainGame");
+        }
 
         yield return StartCoroutine(InBetweenTurns());
         HumanDisable();
@@ -126,7 +131,12 @@ public class GameManager : MonoBehaviour
         RaccoonEnable();
         HumanDisable();
         yield return StartCoroutine(RaccoonTurn());
-
+        if (CheckWin())
+        {
+            //CURRENT: RELOAD SCENE
+            //TODO: GO TO ENDING SCENES
+            SceneManager.LoadScene("MainGame");
+        }
         yield return StartCoroutine(InBetweenTurns());
         RaccoonDisable();
         RaccoonMovement.TurnReset();

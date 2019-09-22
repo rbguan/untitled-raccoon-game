@@ -3272,7 +3272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1083372300}
   - component: {fileID: 1083372301}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Beacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5141,7 +5141,7 @@ GameObject:
   - component: {fileID: 1527126685}
   - component: {fileID: 1527126684}
   - component: {fileID: 1527126686}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: FinishCollider
   m_TagString: Finish
   m_Icon: {fileID: 0}
