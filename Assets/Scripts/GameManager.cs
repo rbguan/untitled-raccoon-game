@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds waitTime;
     private PlayerMovement HumanMovement;
     private PlayerMovement RaccoonMovement;
+    private Canvas HumanCanvas;
+    private Canvas RaccoonCanvas;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,11 +39,14 @@ public class GameManager : MonoBehaviour
         RaccoonSpawnPoint = GameObject.FindGameObjectWithTag("RaccoonSpawn").transform;
         HumanMovement = HumanPlayer.GetComponentInChildren<PlayerMovement>();
         RaccoonMovement = RaccoonPlayer.GetComponentInChildren<PlayerMovement>();
-        ControlInit();
         HumanCamera = HumanPlayer.GetComponentInChildren<Camera>();
         RaccoonCamera = RaccoonPlayer.GetComponentInChildren<Camera>();
-        RaccoonCamera.enabled = false;
-        RaccoonDisable();
+        HumanCanvas = HumanPlayer.GetComponentInChildren<Canvas>();
+        RaccoonCanvas = RaccoonPlayer.GetComponentInChildren<Canvas>();
+    }
+
+    void Start(){
+        ControlInit();
         CameraInit();
         HumanPlayer.transform.position = HumanSpawnPoint.position;
         RaccoonPlayer.transform.position = RaccoonSpawnPoint.position;
@@ -74,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void CameraInit() {
         HumanCamera.enabled = true;
-        RaccoonCamera.enabled = false;
+        if(RaccoonCamera != null){RaccoonCamera.enabled = false;}
     }
 
     private void CameraSwitch() {
@@ -91,27 +96,25 @@ public class GameManager : MonoBehaviour
     {
         HumanPlayer.GetComponent<PlayerInteract>().CanInteract = true;
         HumanMovement.myTurn = true;
-        HumanPlayer.GetComponentInChildren<Canvas>().enabled = true;
+        HumanCanvas.enabled = true;
         HumanPlayer.GetComponentInChildren<AudioSource>().Play();
     }
 
     private void HumanDisable() {
         HumanPlayer.GetComponent<PlayerInteract>().CanInteract = false;
-        HumanPlayer.GetComponentInChildren<Canvas>().enabled = false;
+        HumanCanvas.enabled = false;
         HumanMovement.myTurn = false;
     }
 
     private void RaccoonEnable() {
-        RaccoonPlayer.GetComponent<Rigidbody>().isKinematic = false;
-        RaccoonPlayer.GetComponentInChildren<Canvas>().enabled = true;
+        RaccoonCanvas.enabled = true;
         RaccoonMovement.myTurn = true;
         RaccoonPlayer.GetComponentInChildren<AudioSource>().Play();
     }
 
     private void RaccoonDisable() {
-        RaccoonPlayer.GetComponent<Rigidbody>().isKinematic = true;
-        RaccoonPlayer.GetComponentInChildren<Canvas>().enabled = false;
-        RaccoonMovement.myTurn = false;
+        if(RaccoonCanvas != null) {RaccoonCanvas.enabled = false;}
+        if(RaccoonCanvas != null){RaccoonMovement.myTurn = false;}
     }
 
     private IEnumerator GameLoop()

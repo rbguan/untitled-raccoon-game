@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool edittedParanoia;
     [SerializeField] private LayerMask InteractCheck;
     [HideInInspector] public bool myTurn;
+    [SerializeField] private Light myLight;
+
+    private float defaultSpotAngle= 88.1f;
     void Awake()
     {
         touchedLight = false;
@@ -94,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         touchedLight = false;
         edittedParanoia = false;
         myWalkSlider.mySlider.value = myWalkSlider.mySlider.maxValue;
+        if(gameObject.tag == "Human"){myLight.spotAngle = defaultSpotAngle * (1/ParanoiaLevel);}
         if(gameObject.tag == "Human"){GetComponentInParent<PlayerInteract>().DoneAction = false;}
     }
 
