@@ -5,6 +5,8 @@ using UnityEngine;
 public class TrashCan : InteractableObject
 {
     [SerializeField] private BoxCollider blocker;
+    [SerializeField] private AudioSource audioSource;
+    
     public override void Awake()
     {
         //Debug.Log("subclass");
@@ -13,6 +15,7 @@ public class TrashCan : InteractableObject
     }
 
     public override void DoAction(){
+        audioSource.Play();
         base.DoAction();
         blocker.enabled = true;
     }
