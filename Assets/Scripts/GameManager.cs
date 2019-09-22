@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     // Whose turn it is
     private Turn turn;
 
-    [SerializeField] private GameObject MainCamera;
+    [SerializeField] private Camera MainCamera;
     [SerializeField] private GameObject HumanPlayer;
     [SerializeField] private GameObject RaccoonPlayer;
     public Transform HumanSpawnPoint;
@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
     }
 
     private void CameraInit() {
-        MainCamera.parent = HumanPlayer;
+        MainCamera.transform.parent = HumanPlayer.transform;
     }
 
     private void CameraSwitch() {
         if (turn == Turn.HUMAN){
-            MainCamera.parent = HumanPlayer;
+            MainCamera.transform.parent = HumanPlayer.transform;
         } else {
-            MainCamera.parent = RaccoonPlayer;
+            MainCamera.transform.parent = RaccoonPlayer.transform;
         }
     }
 
