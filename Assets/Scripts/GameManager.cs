@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         ControlInit();
         HumanCamera = HumanPlayer.GetComponentInChildren<Camera>();
         RaccoonCamera = RaccoonPlayer.GetComponentInChildren<Camera>();
+        RaccoonCamera.enabled = false;
+        RaccoonDisable();
         CameraInit();
         HumanPlayer.transform.position = HumanSpawnPoint.position;
         RaccoonPlayer.transform.position = RaccoonSpawnPoint.position;
