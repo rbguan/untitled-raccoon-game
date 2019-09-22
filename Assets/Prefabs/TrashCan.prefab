@@ -101,7 +101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6909052524702420889}
   - component: {fileID: 6233406290858826765}
-  - component: {fileID: 862159502605782047}
+  - component: {fileID: 1830519325}
+  - component: {fileID: 1830519324}
   m_Layer: 9
   m_Name: TrashCan
   m_TagString: Untagged
@@ -137,7 +138,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &862159502605782047
+--- !u!65 &1830519325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6515073564001620139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.04, y: 4.83, z: 9.01}
+  m_Center: {x: 0, y: 1.98, z: 0}
+--- !u!114 &1830519324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,8 +160,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6515073564001620139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79e11bbe168592143923e4ab3554fc65, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f42cb263775b0543a9d0a1e0b867b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spotlight: {fileID: 5022212606612434478, guid: c4ebfc1aff3d0ea4498e09f034c9ccb1,
     type: 3}
+  blocker: {fileID: 1830519325}
