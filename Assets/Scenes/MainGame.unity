@@ -4461,6 +4461,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690625488235666937, guid: 1833a027a0774f74480338fc19c7349f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4594497553124653972, guid: 1833a027a0774f74480338fc19c7349f,
         type: 3}
       propertyPath: m_Name
@@ -4530,11 +4535,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 5.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 690625488235666937, guid: 1833a027a0774f74480338fc19c7349f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1833a027a0774f74480338fc19c7349f, type: 3}
@@ -7747,16 +7747,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5653597544577636173, guid: 2e025e81290218945867c447306ee03c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653597544291909924, guid: 2e025e81290218945867c447306ee03c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5653597544455805072, guid: 2e025e81290218945867c447306ee03c,
         type: 3}
       propertyPath: ParanoiaLevel
@@ -7772,9 +7762,19 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5653597544406884685, guid: 2e025e81290218945867c447306ee03c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5653597544406884684, guid: 2e025e81290218945867c447306ee03c,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653597544577636173, guid: 2e025e81290218945867c447306ee03c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5653597544577636172, guid: 2e025e81290218945867c447306ee03c,
@@ -7783,10 +7783,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 86892312cffc6484aa3f760759a6dfbb,
         type: 3}
-    - target: {fileID: 5653597544406884685, guid: 2e025e81290218945867c447306ee03c,
+    - target: {fileID: 5653597545090238326, guid: 2e025e81290218945867c447306ee03c,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2a66e187fd4695c4d81536c5d31d7bf0,
+        type: 3}
+    - target: {fileID: 5653597544291909924, guid: 2e025e81290218945867c447306ee03c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e025e81290218945867c447306ee03c, type: 3}
