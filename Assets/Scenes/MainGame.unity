@@ -1264,7 +1264,7 @@ PrefabInstance:
     - target: {fileID: 4991611741098708793, guid: 055778ec6fb45b342ae060c61f69bd5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4991611741098708793, guid: 055778ec6fb45b342ae060c61f69bd5b,
         type: 3}
@@ -1319,7 +1319,12 @@ PrefabInstance:
     - target: {fileID: 3735986235343397749, guid: 055778ec6fb45b342ae060c61f69bd5b,
         type: 3}
       propertyPath: m_Radius
-      value: 1.85
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735986235343397749, guid: 055778ec6fb45b342ae060c61f69bd5b,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3919303174372561638, guid: 055778ec6fb45b342ae060c61f69bd5b,
         type: 3}
@@ -3586,6 +3591,7 @@ MonoBehaviour:
   StreetLights:
     serializedVersion: 2
     m_Bits: 1024
+  myMovement: {fileID: 1732750875894473}
 --- !u!114 &1732750875894477
 MonoBehaviour:
   m_ObjectHideFlags: 0

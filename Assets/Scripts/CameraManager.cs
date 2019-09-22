@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
     public Vector3 moveVelocity;
 
     
+    
     void Awake(){
         ZoomToggle = false;
         myCamera = GetComponentInChildren<Camera>();
@@ -45,8 +46,10 @@ public class CameraManager : MonoBehaviour
     }
 
     IEnumerator CameraReset(){
+        
+        transform.rotation = new Quaternion(0,0,0,0);
+        myCamera.transform.rotation = Quaternion.Euler(65,0,0);
         myCamera.transform.position = transform.position + new Vector3(0,12,-7);
-        //myCamera.transform.rotation = Quaternion.Euler(65,0,0);
         yield return new WaitForSeconds(0.5f);
         ZoomToggle = false;
         while(myCamera.transform.position != transform.position + new Vector3(0,10,0)){
