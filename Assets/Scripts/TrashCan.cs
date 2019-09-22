@@ -6,6 +6,8 @@ public class TrashCan : InteractableObject
 {
     [SerializeField] private BoxCollider blocker;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Transform trash;
+    [SerializeField] private MeshRenderer render;
     
     public override void Awake()
     {
@@ -18,5 +20,7 @@ public class TrashCan : InteractableObject
         audioSource.Play();
         base.DoAction();
         blocker.enabled = true;
+        render.enabled = true;
+        trash.transform.rotation = Quaternion.Euler(200,0,0);
     }
 }
