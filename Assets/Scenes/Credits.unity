@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.41574028, y: 0.8173847}
   m_AnchorMax: {x: 0.58449346, y: 0.97300005}
-  m_AnchoredPosition: {x: -0.10800004, y: 0.000015258789}
+  m_AnchoredPosition: {x: -0.10800171, y: 0.000015258789}
   m_SizeDelta: {x: -0.94000006, y: -0.97999954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16719053
@@ -407,7 +407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.76100004, y: 0.56600004}
   m_AnchorMax: {x: 0.88386077, y: 0.7844777}
-  m_AnchoredPosition: {x: -0.3999939, y: -0.5}
+  m_AnchoredPosition: {x: -0.4000244, y: -0.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &663426472
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259ebcf3fb554c24cb789fb0eeeff2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: https://soundcloud.com/xirothehero
+  link: https://github.com/xirothehero
 --- !u!1 &885126790
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.019989014, y: -0.5}
+  m_AnchoredPosition: {x: -0.020019531, y: -0.5}
   m_SizeDelta: {x: 0.039978027, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1258873662
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259ebcf3fb554c24cb789fb0eeeff2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: 
+  link: https://qwertyhwin.wixsite.com/portfolio
 --- !u!114 &1398194679
 MonoBehaviour:
   m_ObjectHideFlags: 0
