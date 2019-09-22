@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4295601184568691575}
   - component: {fileID: 3854500973058736481}
-  m_Layer: 0
+  - component: {fileID: 741377806}
+  m_Layer: 9
   m_Name: TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +46,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &741377806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442632394063924573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e11bbe168592143923e4ab3554fc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlight: {fileID: 5022212606612434478, guid: c4ebfc1aff3d0ea4498e09f034c9ccb1,
+    type: 3}
 --- !u!1 &7517179481518370218
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +72,7 @@ GameObject:
   - component: {fileID: 6734377805077961303}
   - component: {fileID: 2545207841039941262}
   - component: {fileID: 3115567179760164869}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
