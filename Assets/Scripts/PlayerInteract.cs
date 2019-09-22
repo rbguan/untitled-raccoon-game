@@ -13,6 +13,8 @@ private Rigidbody myRigidBody;
     private SphereCollider myReach;
     public LayerMask Interactables;
     public LayerMask StreetLights;
+    public LayerMask Finish;
+    public LayerMask Raccoon;
     private float InteractInput;
     [SerializeField] private PlayerMovement myMovement;
     
@@ -48,17 +50,20 @@ private Rigidbody myRigidBody;
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, myReach.radius, StreetLights);
-        if(colliders.Length > 0){
+        Collider[] lightColliders = Physics.OverlapSphere(transform.position, myReach.radius, StreetLights);
+        if(lightColliders.Length > 0){
             myMovement.touchedLight = true;
         }
 
-        if (other.CompareTag("Raccoon"))
+        Collider[] raccoonColliders = Physics.OverlapSphere(transform.position, myReach.radius, Raccoon);
+        Collider[] finishColliders = Physics.OverlapSphere(transform.position, myReach.radius, Finish);
+
+        if (raccoonColliders.Length > 0)
         {
             RaccoonWin = true;
         }
 
-        if (other.CompareTag("Finish"))
+        if (finishColliders.Length > 0)
         {
             HumanWin = true;
         }

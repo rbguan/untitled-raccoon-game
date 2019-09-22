@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -27,6 +28,9 @@ public class InteractableObject : MonoBehaviour
 
     public virtual void DoAction(){
         myLight.color = Color.red;
+        if(gameObject.tag == "Finish"){
+            SceneManager.LoadScene("MainGame");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
