@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     // Whose turn it is
     private Turn turn;
 
-    [SerializeField] private Camera MainCamera;
+    [SerializeField] private Camera HumanCamera;
+    [SerializeField] private Camera RaccoonCamera;
     [SerializeField] private GameObject HumanPlayer;
     [SerializeField] private GameObject RaccoonPlayer;
     public Transform HumanSpawnPoint;
@@ -22,15 +23,24 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds waitTime;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         turn = Turn.HUMAN;
         //attach camera to human
-        ControlInit();
-        CameraInit();
         waitTime = new WaitForSeconds(timeBetweenTurns);
+        HumanPlayer = GameObject.FindGameObjectWithTag("Human");
+        RaccoonPlayer = GameObject.FindGameObjectWithTag("Raccoon");
+        HumanSpawnPoint = GameObject.FindGameObjectWithTag("HumanSpawn").transform;
+        RaccoonSpawnPoint = GameObject.FindGameObjectWithTag("RaccoonSpawn").transform;
+        ControlInit();
+        HumanCamera = HumanPlayer.GetComponentInChildren<Camera>();
+        RaccoonCamera = RaccoonPlayer.GetComponentInChildren<Camera>();
+        CameraInit();
+        HumanPlayer.transform.position = HumanSpawnPoint.position;
+        RaccoonPlayer.transform.position = RaccoonSpawnPoint.position;
         StartCoroutine(GameLoop());
     }
+    
 
 
     private void SwitchTurn() {
@@ -56,14 +66,17 @@ public class GameManager : MonoBehaviour
     }
 
     private void CameraInit() {
-        MainCamera.transform.parent = HumanPlayer.transform;
+        HumanCamera.enabled = true;
+        RaccoonCamera.enabled = false;
     }
 
     private void CameraSwitch() {
         if (turn == Turn.HUMAN){
-            MainCamera.transform.parent = HumanPlayer.transform;
+            HumanCamera.enabled = true;
+            RaccoonCamera.enabled = false;
         } else {
-            MainCamera.transform.parent = RaccoonPlayer.transform;
+            HumanCamera.enabled = false;
+            RaccoonCamera.enabled = true;
         }
     }
 
@@ -78,33 +91,29 @@ public class GameManager : MonoBehaviour
     }
 
     private void RaccoonEnable() {
-        RaccoonPlayer.GetComponent<PlayerInteract>().CanInteract = true;
         RaccoonPlayer.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void RaccoonDisable() {
-        RaccoonPlayer.GetComponent<PlayerInteract>().CanInteract = false;
         RaccoonPlayer.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private IEnumerator GameLoop()
     {
+        HumanEnable();
+        RaccoonDisable();
         yield return StartCoroutine(HumanTurn());
         HumanDisable();
-        if (CheckWin())
-        {
-            //reset
-        }
-        SwitchTurn();
-        yield return StartCoroutine(InBetweenTurns());
 
+        yield return StartCoroutine(InBetweenTurns());
+        SwitchTurn();
+        RaccoonEnable();
+        HumanDisable();
         yield return StartCoroutine(RaccoonTurn());
 
         RaccoonDisable();
-        SwitchTurn();
-        
         yield return StartCoroutine(InBetweenTurns());
-
+        SwitchTurn();
         if (CheckWin())
         {
             //reset
@@ -115,31 +124,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // private IEnumerator TurnProgress() {
-    //     if (turn == Turn.HUMAN){
-    //         if(HumanPlayer.GetComponent<PlayerMovement>().WalkRemaining <= 0 
-    //         && HumanPlayer.GetComponent<PlayerInteract>().DoneAction == true){
-    //             SwitchTurn();
-    //         }
-    //     }
-    //     else {
-    //         if(RaccoonPlayer.GetComponent<PlayerMovement>().WalkRemaining <= 0){
-    //             SwitchTurn();
-    //         }
-    //     }
-    //     yield return null;
-    // }
-
     private IEnumerator HumanTurn(){
-        HumanEnable();
+
         while(HumanPlayer.GetComponent<PlayerMovement>().WalkRemaining > 0 
-            && HumanPlayer.GetComponent<PlayerInteract>().DoneAction != true){
+            || HumanPlayer.GetComponent<PlayerInteract>().DoneAction != true){
                 yield return null;
             }
     }
 
     private IEnumerator RaccoonTurn(){
-        RaccoonEnable();
         while(RaccoonPlayer.GetComponent<PlayerMovement>().WalkRemaining > 0){
                 yield return null;
             }

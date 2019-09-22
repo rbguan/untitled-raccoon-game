@@ -7,12 +7,16 @@ public class InteractableObject : MonoBehaviour
 {
     SphereCollider myCollider;
     public Light spotlight;
+    private Light myLight;
     // Start is called before the first frame update
-    void Awake()
+    virtual public void Awake()
     {
-        Light spotlightInstance = Instantiate(spotlight, new Vector3(0, 7, 0) + transform.position, new Quaternion(90,0,0,0)) as Light;
-        spotlightInstance.transform.parent = gameObject.transform;
-        spotlight.enabled = false;
+        Debug.Log("superclass");
+        Light spotlightInstance = Instantiate(spotlight, new Vector3(0, 7, 0) + transform.position, 
+            Quaternion.identity, gameObject.transform) as Light;
+        spotlightInstance.transform.rotation = Quaternion.Euler(90, 0, 0);
+        myLight = spotlightInstance;
+        myLight.enabled = false;
     }
 
     // Update is called once per frame
@@ -21,18 +25,18 @@ public class InteractableObject : MonoBehaviour
         
     }
 
-    public void DoAction(){
-        spotlight.color = Color.red;
+    public virtual void DoAction(){
+        myLight.color = Color.red;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        spotlight.enabled = true;
+        myLight.enabled = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        spotlight.enabled = false;
+        myLight.enabled = false;
     }
     
 }
