@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [HideInInspector] public bool DoneAction;
+    [HideInInspector] public bool CanInteract;
     private Rigidbody myRigidBody;
     private SphereCollider myReach;
     public LayerMask Interactables;
@@ -15,6 +16,7 @@ public class PlayerInteract : MonoBehaviour
     {
         myRigidBody = GetComponent<Rigidbody>();
         myReach = GetComponent<SphereCollider>();
+        CanInteract = true;
         DoneAction = false;
     }
 
@@ -30,7 +32,7 @@ public class PlayerInteract : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, myReach.radius, Interactables);
         for(int i = 0; i < colliders.Length; i++)
         {
-            if(InteractInput > 0 && !DoneAction){
+            if(CanInteract && InteractInput > 0 && !DoneAction){
                 colliders[i].GetComponentInParent<InteractableObject>().DoAction();
                 DoneAction = true;
             }
