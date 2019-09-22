@@ -19,12 +19,6 @@ public class StatSlider : MonoBehaviour
         mySlider.value = StartingLevel;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeLevel(float change)
     {
         mySlider.value += change;
