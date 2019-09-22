@@ -9,7 +9,9 @@ public class PlayerInteract : MonoBehaviour
     private Rigidbody myRigidBody;
     private SphereCollider myReach;
     public LayerMask Interactables;
+    public LayerMask StreetLights;
     private float InteractInput;
+    [SerializeField] private PlayerMovement myMovement;
     
     // Start is called before the first frame update
     void Awake()
@@ -36,6 +38,14 @@ public class PlayerInteract : MonoBehaviour
                 colliders[i].GetComponentInParent<InteractableObject>().DoAction();
                 DoneAction = true;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, myReach.radius, StreetLights);
+        if(colliders.Length > 0){
+            myMovement.touchedLight = true;
         }
     }
 

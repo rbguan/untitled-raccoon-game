@@ -6,23 +6,26 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float InitialWalkRange;
     [SerializeField] private float ParanoiaLevel;
-    [HideInInspector] public float WalkRemaining;
+    public float WalkRemaining;
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float TurnSpeed;
+
     private Rigidbody myRigidBody;
     private float VerticalInput;
     private float HorizontalInput;
-    private StatSlider myWalkSlider;
-    private StatSlider myParanoiaSlider;   
-
-
+    [SerializeField] private StatSlider myWalkSlider;
+    [SerializeField] private StatSlider myParanoiaSlider;   
+    [HideInInspector] public bool touchedLight;
+    [HideInInspector] public bool edittedParanoia;
     void Awake()
     {
+        touchedLight = false;
+        edittedParanoia = false;
         WalkRemaining = InitialWalkRange * ParanoiaLevel;
         myRigidBody = GetComponent<Rigidbody>();
-        myWalkSlider = GetComponent<StatSlider>();
         myWalkSlider.StartingLevel = WalkRemaining;
         myWalkSlider.mySlider.maxValue = WalkRemaining;
+        myParanoiaSlider.StartingLevel = 1f;
     }
     // Update is called once per frame
     void Update()
@@ -45,6 +48,26 @@ public class PlayerMovement : MonoBehaviour
             myRigidBody.MoveRotation(myRigidBody.rotation * turnRotation);
             WalkRemaining -= (moveVector.magnitude);
             myWalkSlider.mySlider.value -= moveVector.magnitude;
+        } else{
+            if(!edittedParanoia){
+                if(touchedLight){
+                    if(myParanoiaSlider.mySlider.value <= 1){
+                        myParanoiaSlider.mySlider.value = 1;
+                    } else{
+                        myParanoiaSlider.mySlider.value--;
+                    }
+                    touchedLight = false;
+                    edittedParanoia = true;
+                } else{
+                    if(myParanoiaSlider.mySlider.value >= 4){
+                        myParanoiaSlider.mySlider.value = 4;
+                    } else{
+                        myParanoiaSlider.mySlider.value++;
+                    }
+                    edittedParanoia = true;
+                }
+            }
+            
         }
     }
 

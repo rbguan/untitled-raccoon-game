@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
     private float toggle;
     public float dampTime = 0.2f;
     public Vector3 moveVelocity;
+
+    
     void Awake(){
         ZoomToggle = false;
         myCamera = GetComponentInChildren<Camera>();
@@ -33,7 +35,8 @@ public class CameraManager : MonoBehaviour
 
     IEnumerator CameraZoom(){
         myCamera.transform.position = Vector3.SmoothDamp(myCamera.transform.position, 
-            new Vector3(0,60,0), ref moveVelocity, dampTime);
+            new Vector3(0,60,-35), ref moveVelocity, dampTime);
+        myCamera.transform.rotation = Quaternion.Euler(65,0,0);
         yield return new WaitForSeconds(0.5f);
         ZoomToggle = true;
         while(toggle > 0){
@@ -42,7 +45,8 @@ public class CameraManager : MonoBehaviour
     }
 
     IEnumerator CameraReset(){
-        myCamera.transform.position = transform.position + new Vector3(0,10,0);
+        myCamera.transform.position = transform.position + new Vector3(0,12,-7);
+        //myCamera.transform.rotation = Quaternion.Euler(65,0,0);
         yield return new WaitForSeconds(0.5f);
         ZoomToggle = false;
         while(myCamera.transform.position != transform.position + new Vector3(0,10,0)){
