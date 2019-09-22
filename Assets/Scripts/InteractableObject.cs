@@ -10,8 +10,9 @@ public class InteractableObject : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Light spotlightInstance = Instantiate(spotlight, new Vector3(0, 7, 0) + transform.position, new Quaternion(90,0,0,0)) as Light;
+        spotlightInstance.transform.parent = gameObject.transform;
         spotlight.enabled = false;
-        spotlight.transform.position = new Vector3(0, 10, 0) + transform.position;
     }
 
     // Update is called once per frame

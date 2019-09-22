@@ -43,28 +43,28 @@ public class GameManager : MonoBehaviour
     //Check win
     //Turn coroutine
 
-    private IEnumerator GameLoop()
-    {
-        yield return StartCoroutine(TurnProgress());
+    // private IEnumerator GameLoop()
+    // {
+    //     yield return StartCoroutine(TurnProgress());
 
-        if (m_GameWinner != null)
-        {
-            //reset
-        }
-        else
-        {
-            StartCoroutine(GameLoop());
-        }
-    }
+    //     if (m_GameWinner != null)
+    //     {
+    //         //reset
+    //     }
+    //     else
+    //     {
+    //         StartCoroutine(GameLoop());
+    //     }
+    // }
 
-    private IEnumerator TurnProgress() {
-        if (turn == Turn.HUMAN){
-            //check walk and interact
-            //switch
-        }
-        else {
-            //check walk
-            //switch
-        }
-    }
+    // private IEnumerator TurnProgress() {
+    //     if (turn == Turn.HUMAN){
+    //         //check walk and interact
+    //         //switch
+    //     }
+    //     else {
+    //         //check walk
+    //         //switch
+    //     }
+    // }
 }
