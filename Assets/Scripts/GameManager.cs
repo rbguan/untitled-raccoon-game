@@ -80,9 +80,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HumanEnable() {
+    private void HumanEnable()
+    {
         HumanPlayer.GetComponent<PlayerInteract>().CanInteract = true;
         HumanPlayer.GetComponent<Rigidbody>().isKinematic = false;
+        HumanPlayer.GetComponentInChildren<AudioSource>().Play();
     }
 
     private void HumanDisable() {
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     private void RaccoonEnable() {
         RaccoonPlayer.GetComponent<Rigidbody>().isKinematic = false;
+        RaccoonPlayer.GetComponentInChildren<AudioSource>().Play();
     }
 
     private void RaccoonDisable() {
