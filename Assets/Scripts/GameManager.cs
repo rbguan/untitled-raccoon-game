@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -119,7 +120,9 @@ public class GameManager : MonoBehaviour
         SwitchTurn();
         if (CheckWin())
         {
-            //reset
+            //CURRENT: RELOAD SCENE
+            //TODO: GO TO ENDING SCENES
+            SceneManager.LoadScene("MainGame");
         }
         else
         {
@@ -146,9 +149,11 @@ public class GameManager : MonoBehaviour
     }
 
     private bool CheckWin(){
-        //check human win
-        //check raccoon win
-        //return
-        return false;
+        if (!HumanPlayer.GetComponent<PlayerInteract>().HumanWin &&
+            !HumanPlayer.GetComponent<PlayerInteract>().RaccoonWin)
+        {
+            return false;
+        } 
+        return true;
     }
 }

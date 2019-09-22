@@ -6,7 +6,10 @@ public class PlayerInteract : MonoBehaviour
 {
     [HideInInspector] public bool DoneAction;
     [HideInInspector] public bool CanInteract;
-    private Rigidbody myRigidBody;
+    [HideInInspector] public bool RaccoonWin;
+    [HideInInspector] public bool HumanWin;
+
+private Rigidbody myRigidBody;
     private SphereCollider myReach;
     public LayerMask Interactables;
     public LayerMask StreetLights;
@@ -20,6 +23,8 @@ public class PlayerInteract : MonoBehaviour
         myReach = GetComponent<SphereCollider>();
         CanInteract = true;
         DoneAction = false;
+        RaccoonWin = false;
+        HumanWin = false;
     }
 
     // Update is called once per frame
@@ -46,6 +51,16 @@ public class PlayerInteract : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, myReach.radius, StreetLights);
         if(colliders.Length > 0){
             myMovement.touchedLight = true;
+        }
+
+        if (other.CompareTag("Raccoon"))
+        {
+            RaccoonWin = true;
+        }
+
+        if (other.CompareTag("Finish"))
+        {
+            HumanWin = true;
         }
     }
 
