@@ -10,7 +10,7 @@ public class StatSlider : MonoBehaviour
     public Image fillImage;
 
     private void Awake()
-    {
+    {   
         mySlider.minValue = 0;
     }
 
