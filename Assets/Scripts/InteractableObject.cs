@@ -9,8 +9,9 @@ public class InteractableObject : MonoBehaviour
     public Light spotlight;
     private Light myLight;
     // Start is called before the first frame update
-    void Awake()
+    virtual public void Awake()
     {
+        Debug.Log("superclass");
         Light spotlightInstance = Instantiate(spotlight, new Vector3(0, 7, 0) + transform.position, 
             Quaternion.identity, gameObject.transform) as Light;
         spotlightInstance.transform.rotation = Quaternion.Euler(90, 0, 0);
@@ -24,7 +25,7 @@ public class InteractableObject : MonoBehaviour
         
     }
 
-    public void DoAction(){
+    public virtual void DoAction(){
         myLight.color = Color.red;
     }
 
