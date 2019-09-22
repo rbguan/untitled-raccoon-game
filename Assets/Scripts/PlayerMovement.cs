@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float InitialWalkRange;
-    [SerializeField] private float ParanoiaLevel;
+    [SerializeField] private float ParanoiaLevel = 1f;
     public float WalkRemaining;
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float TurnSpeed;
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private StatSlider myParanoiaSlider;   
     [HideInInspector] public bool touchedLight;
     [HideInInspector] public bool edittedParanoia;
+    [SerializeField] private LayerMask InteractCheck;
     void Awake()
     {
         touchedLight = false;
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody>();
         myWalkSlider.StartingLevel = WalkRemaining;
         myWalkSlider.mySlider.maxValue = WalkRemaining;
-        myParanoiaSlider.StartingLevel = 1f;
+        if(gameObject.tag != "Raccoon"){myParanoiaSlider.StartingLevel = 1f;}
     }
     // Update is called once per frame
     void Update()
@@ -49,22 +50,28 @@ public class PlayerMovement : MonoBehaviour
             WalkRemaining -= (moveVector.magnitude);
             myWalkSlider.mySlider.value -= moveVector.magnitude;
         } else{
-            if(!edittedParanoia){
-                if(touchedLight){
-                    if(myParanoiaSlider.mySlider.value <= 1){
-                        myParanoiaSlider.mySlider.value = 1;
+            if(gameObject.tag != "Raccoon"){
+                if(!edittedParanoia){
+                    if(touchedLight){
+                        if(myParanoiaSlider.mySlider.value <= 1){
+                            myParanoiaSlider.mySlider.value = 1;
+                        } else{
+                            myParanoiaSlider.mySlider.value--;
+                        }
+                        touchedLight = false;
+                        edittedParanoia = true;
                     } else{
-                        myParanoiaSlider.mySlider.value--;
+                        if(myParanoiaSlider.mySlider.value >= 4){
+                            myParanoiaSlider.mySlider.value = 4;
+                        } else{
+                            myParanoiaSlider.mySlider.value++;
+                        }
+                        edittedParanoia = true;
                     }
-                    touchedLight = false;
-                    edittedParanoia = true;
-                } else{
-                    if(myParanoiaSlider.mySlider.value >= 4){
-                        myParanoiaSlider.mySlider.value = 4;
-                    } else{
-                        myParanoiaSlider.mySlider.value++;
-                    }
-                    edittedParanoia = true;
+                }
+                Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f, InteractCheck);
+                if(colliders.Length < 1){
+                    GetComponentInParent<PlayerInteract>().DoneAction = true;
                 }
             }
             
